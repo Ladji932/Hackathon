@@ -16,7 +16,7 @@ useEffect(() => {
     try {
       console.log("Chargement des questions...");
 
-      const res = await axios.get("http://localhost:5001/api/quiz/questions");
+      const res = await axios.get("https://hackathon-2-3fxn.onrender.com/api/quiz/questions");
 
       console.log("Réponse brute API :", res);
       console.log("res.data :", res.data);
@@ -60,7 +60,7 @@ useEffect(() => {
     }
 
     try {
-      const res = await axios.post("http://localhost:5001/api/quiz/submissions", {
+      const res = await axios.post("https://hackathon-2-3fxn.onrender.com/api/quiz/submissions", {
         userId: user?._id,
         answers: updatedAnswers,
       });

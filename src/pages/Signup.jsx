@@ -43,7 +43,7 @@ function Signup() {
       };
 
       const res = await axios.post(
-        "http://localhost:5001/api/users/signup",
+        "https://hackathon-2-3fxn.onrender.com/api/users/signup",
         payload
       );
 

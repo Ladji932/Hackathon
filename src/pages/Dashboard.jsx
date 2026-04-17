@@ -102,7 +102,7 @@ function Dashboard() {
     try {
       setLoadingQr(true);
 
-      const res = await axios.get("http://localhost:5001/api/users/me/qr", {
+      const res = await axios.get("https://hackathon-2-3fxn.onrender.com/api/users/me/qr", {
         params: { userId: user._id },
       });
 
