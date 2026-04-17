@@ -1,17 +1,20 @@
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
+import dotenv from "dotenv";
 
 import userRoutes from "./routes/routes.js";
 import quizQuestionRoutes from "./Routes/quizQuestions.js";
 import quizSubmissionRoutes from "./Routes/quizSubmissions.js";
 import chatbotRoutes from "./Routes/chatbot.js";
 
+dotenv.config();
+
 const app = express();
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "*",
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
@@ -24,7 +27,7 @@ app.get("/", (req, res) => {
 });
 
 mongoose
-  .connect("mongodb://127.0.0.1:27017/hackathon")
+  .connect(process.env.MONGODB_URI)
   .then(() => console.log("MongoDB connecté"))
   .catch((err) => console.log("Erreur Mongo :", err));
 
