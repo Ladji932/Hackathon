@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema(
   {
@@ -27,10 +27,24 @@ const userSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    points: {
+      type: Number,
+      default: 40,
+    },
+    rewardUnlocked: {
+      type: Boolean,
+      default: false,
+    },
+    qrCodeToken: {
+      type: String,
+      default: "",
+    },
   },
   {
     timestamps: true,
   }
 );
 
-module.exports = mongoose.model("User", userSchema);
+const User = mongoose.model("User", userSchema);
+
+export default User;

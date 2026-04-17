@@ -1,8 +1,9 @@
-const express = require("express");
-const router = express.Router();
+import express from "express";
 
-const QuizQuestion = require("../Model/QuizQuestion");
-const QuizSubmission = require("../Model/QuizSubmission");
+import QuizQuestion from "../Model/QuizQuestion.js";
+import QuizSubmission from "../Model/QuizSubmission.js";
+
+const router = express.Router();
 
 router.post("/", async (req, res) => {
   try {
@@ -74,4 +75,4 @@ router.post("/", async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

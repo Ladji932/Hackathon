@@ -1,6 +1,7 @@
-const express = require("express");
+import express from "express";
+import QuizQuestion from "../Model/QuizQuestion.js";
+
 const router = express.Router();
-const QuizQuestion = require("../Model/QuizQuestion");
 
 router.get("/", async (req, res) => {
   try {
@@ -21,4 +22,4 @@ router.get("/", async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

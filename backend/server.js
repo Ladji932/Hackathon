@@ -1,10 +1,11 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const cors = require("cors");
+import express from "express";
+import mongoose from "mongoose";
+import cors from "cors";
 
-const userRoutes = require("./Routes/routes");
-const quizQuestionRoutes = require("./Routes/quizQuestions");
-const quizSubmissionRoutes = require("./Routes/quizSubmissions");
+import userRoutes from "./routes/routes.js";
+import quizQuestionRoutes from "./Routes/quizQuestions.js";
+import quizSubmissionRoutes from "./Routes/quizSubmissions.js";
+import chatbotRoutes from "./Routes/chatbot.js";
 
 const app = express();
 
@@ -30,7 +31,8 @@ mongoose
 app.use("/api/users", userRoutes);
 app.use("/api/quiz/questions", quizQuestionRoutes);
 app.use("/api/quiz/submissions", quizSubmissionRoutes);
+app.use("/api/chatbot", chatbotRoutes);
 
-app.listen(5001, () => {
+app.listen(5001, "0.0.0.0", () => {
   console.log("Server running on port 5001");
 });

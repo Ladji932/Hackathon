@@ -1,8 +1,9 @@
-const User = require("../Model/User");
-const bcrypt = require("bcryptjs");
+import User from "../Model/User.js";
+import bcrypt from "bcryptjs";
+import crypto from "crypto";
 
 // SIGNUP
-const signup = async (req, res) => {
+export const signup = async (req, res) => {
   try {
     const { firstName, lastName, email, password } = req.body;
 
@@ -24,11 +25,17 @@ const signup = async (req, res) => {
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
+    // 🔥 GENERATE QR TOKEN UNIQUE
+    const qrCodeToken = crypto.randomBytes(24).toString("hex");
+
     const user = await User.create({
       firstName,
       lastName,
       email,
       password: hashedPassword,
+      qrCodeToken,
+      points: 40,
+      rewardUnlocked: false,
     });
 
     return res.status(201).json({
@@ -44,7 +51,7 @@ const signup = async (req, res) => {
 };
 
 // LOGIN
-const login = async (req, res) => {
+export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
 
@@ -81,9 +88,4 @@ const login = async (req, res) => {
       message: "Erreur serveur",
     });
   }
-};
-
-module.exports = {
-  signup,
-  login,
 };
