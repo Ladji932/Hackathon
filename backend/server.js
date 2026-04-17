@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 
-import userRoutes from "./routes/routes.js";
+import userRoutes from "./Routes/routes.js";
 import quizQuestionRoutes from "./Routes/quizQuestions.js";
 import quizSubmissionRoutes from "./Routes/quizSubmissions.js";
 import chatbotRoutes from "./Routes/chatbot.js";
