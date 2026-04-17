@@ -3,14 +3,18 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 
 const userRoutes = require("./Routes/routes");
+const quizQuestionRoutes = require("./Routes/quizQuestions");
+const quizSubmissionRoutes = require("./Routes/quizSubmissions");
 
 const app = express();
 
-app.use(cors({
-  origin: "http://localhost:5173",
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-}));
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 
 app.use(express.json());
 
@@ -24,7 +28,9 @@ mongoose
   .catch((err) => console.log("Erreur Mongo :", err));
 
 app.use("/api/users", userRoutes);
+app.use("/api/quiz/questions", quizQuestionRoutes);
+app.use("/api/quiz/submissions", quizSubmissionRoutes);
 
 app.listen(5001, () => {
-  console.log("Server running on port 5000");
+  console.log("Server running on port 5001");
 });

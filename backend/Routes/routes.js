@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const { signup, login } = require("../Controller/userController");
+const QuizQuestion = require("../Model/QuizQuestion");
 
 router.post("/signup", signup);
 router.post("/login", login);
